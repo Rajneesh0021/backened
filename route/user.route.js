@@ -28,7 +28,7 @@ try {
 
 userRoute.post('/login',async (req,res)=>{
     let {email,password}=req.body;
-    let user=await model.findOne({email})
+    let user=await model.find(email)
     try {
         bcrypt.compare(password, user.password, function(err, result) {
             if(result){
