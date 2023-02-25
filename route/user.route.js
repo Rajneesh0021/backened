@@ -32,7 +32,7 @@ userRoute.post('/login',async (req,res)=>{
     try {
       bcrypt.compare(password, user[0].password, (err, result)=> {
             if(result){
-                    let token=jwt.sign({id:user[0]._id , secret})
+                    let token=jwt.sign({_id:user[0]._id} , secret)
                     res.send({"message":"login success" ,"token":token})
                 }else{
                     res.send({"message":"login failed","err":err})
