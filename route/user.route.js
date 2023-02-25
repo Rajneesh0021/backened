@@ -36,6 +36,10 @@ let password = req.body.password;
 // }
 console.log(email,password);
     let user=await model.find({email})
+    if(user.length==0){
+        res.status(404).json({message:"user not found"})
+
+    }
     try {
       bcrypt.compare(password, user[0].password, (err, result)=> {
             if(err){
