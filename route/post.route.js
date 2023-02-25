@@ -1,5 +1,5 @@
 const {Router} = require('express');
-const postRoute= Router()
+const postRoute= Router();
 const {postModel}=require('../model/post.model')
 
 

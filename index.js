@@ -24,7 +24,6 @@ app.listen(Port, async()=>{
     try {
         await connection
         console.log(`running on port ${Port}`)
-
     } catch (err) {
         console.log(err)
     }
