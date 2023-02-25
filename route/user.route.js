@@ -30,9 +30,9 @@ userRoute.post('/login',async (req,res)=>{
     let {email, password}=req.body;
     let user=await model.find({email})
     try {
-    await  bcrypt.compare(password, user[0].password, (err, result)=> {
+      bcrypt.compare(password, user[0].password, (err, result)=> {
             if(result){
-                    let token=jwt.sign({id:user[0]._id} , secret)
+                    let token=jwt.sign({id:user[0]._id , secret})
                     res.send({"message":"login success" ,"token":token})
                 }else{
                     res.send({"message":"login failed","err":err})
