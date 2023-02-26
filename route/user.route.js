@@ -51,6 +51,7 @@ userRoute.post("/login", async (req, res) => {
   
 
   let user = await model.find({ email });
+  let id = user[0]._id;
   if (user.length == 0) {
     res.status(404).json({ message: "user not found" });
   }else{
@@ -63,11 +64,11 @@ userRoute.post("/login", async (req, res) => {
          if(type == "admin" && user[0].userType == "admin"){
           let token = jwt.sign({ _id: user[0]._id }, process.env.SECRET);
   
-          res.send({message:"logged in as admin", token: token });
+          res.send({message:"logged in as admin", token: token, id:id });
          }else{
           let token = jwt.sign({ _id: user[0]._id }, process.env.SECRET);
   
-          res.send({message:"logged in as user" ,token: token });
+          res.send({message:"logged in as user" ,token: token, id:id });
          }
 
           
