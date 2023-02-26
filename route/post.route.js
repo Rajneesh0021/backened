@@ -1,7 +1,7 @@
 const {Router} = require('express');
 const postRoute= Router();
 const {postModel}=require('../model/post.model')
-
+const {verifyToken}= require('../authentication/user.authenticate')
 
 postRoute.get('/',async (req,res)=>{
 const query= req.query
@@ -15,8 +15,8 @@ res.send(posts)
 }
 })
 
-postRoute.post('/add',async (req,res)=>{
-   const payload =req.body
+postRoute.post('/add' , async (req,res)=>{
+   const payload =req.body;
    try {
     let posts= postModel(payload)
     await posts.save()
@@ -27,19 +27,8 @@ postRoute.post('/add',async (req,res)=>{
 })
     
 
-postRoute.get('/top',async (req,res)=>{
-    let query= {no_if_comments:''}
-    try {
-        let posts = await postModel.find(query)
-    res.send(posts)
-    
-    } catch (error) {
-        res.send(error.message)
-    
-    }
-    
-})
-postRoute.patch('/update/:id',async (req,res)=>{
+
+postRoute.patch('/update/:id', async (req,res)=>{
     let id= req.params.id
     let body= req.body
     
@@ -53,9 +42,11 @@ postRoute.patch('/update/:id',async (req,res)=>{
     
     }
 })
-postRoute.delete('/delete:id',async (req,res)=>{
+postRoute.delete('/delete:id', async (req,res)=>{
     let id= req.params.id
+    console.log(id);
     try {
+       
         let posts = await postModel.findByIdAndDelete(id)
     res.send({"message":"deleted successfully"})    
     } catch (error) {

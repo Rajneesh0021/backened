@@ -1,11 +1,14 @@
 const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema({
-title: String,
-body : String,
-device :String,
-no_if_comments: Number,
-userId: String
+name: String,
+img : String,
+price :String,
+detail: String,
+type: String
+},
+{
+timestamps: true
 });
 
 

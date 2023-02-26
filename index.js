@@ -16,7 +16,7 @@ app.get("/",(req,res)=>{
 app.use('/users', userRoute)
 
 
-app.use(verifyToken)
+// app.use(verifyToken)
 app.use('/posts', postRoute)
 
 
