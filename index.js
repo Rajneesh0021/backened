@@ -8,7 +8,7 @@ app.use(cors())
 const {connection}= require('./db')
 const {userRoute}= require('./route/user.route')
 const {postRoute}=require('./route/post.route')
-const {verifyToken}= require('./authentication/user.authenticate')
+// const {verifyToken}= require('./authentication/user.authenticate')
 
 app.get("/",(req,res)=>{
     res.send("  HOME PAGE")

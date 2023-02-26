@@ -1,7 +1,7 @@
 const {Router} = require('express');
 const postRoute= Router();
 const {postModel}=require('../model/post.model')
-const {verifyToken}= require('../authentication/user.authenticate')
+
 
 postRoute.get('/',async (req,res)=>{
 const query= req.query

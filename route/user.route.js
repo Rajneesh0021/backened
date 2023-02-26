@@ -63,11 +63,11 @@ userRoute.post("/login", async (req, res) => {
          if(type == "admin" && user[0].userType == "admin"){
           let token = jwt.sign({ _id: user[0]._id }, process.env.SECRET);
   
-          res.send({user, token: token });
+          res.send({message:"logged in as admin", token: token });
          }else{
           let token = jwt.sign({ _id: user[0]._id }, process.env.SECRET);
   
-          res.send({ token: token });
+          res.send({message:"logged in as user" ,token: token });
          }
 
           
